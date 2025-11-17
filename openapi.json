@@ -8,7 +8,7 @@
   "servers": [
     {
       "url": "https://api.dedaluslabs.ai",
-      "description": "Production"
+      "description": "Official Dedalus API"
     }
   ],
   "paths": {
