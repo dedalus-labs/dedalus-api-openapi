@@ -66,6 +66,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.models.ListModelsResponse;\nimport com.dedalus_sdk.api.models.models.ModelListParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ListModelsResponse listModelsResponse = client.models().list();\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.models.ListModelsResponse\nimport com.dedalus_sdk.api.models.models.ModelListParams\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val listModelsResponse: ListModelsResponse = client.models().list()\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/models \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\""
           }
@@ -121,6 +125,10 @@
           {
             "lang": "Java",
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.models.Model;\nimport com.dedalus_sdk.api.models.models.ModelRetrieveParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        Model model = client.models().retrieve(\"model_id\");\n    }\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.models.Model\nimport com.dedalus_sdk.api.models.models.ModelRetrieveParams\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val model: Model = client.models().retrieve(\"model_id\")\n}"
           },
           {
             "lang": "cURL",
@@ -185,6 +193,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletion;\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletionCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()\n            .model(\"openai/gpt-5\")\n            .build();\n        ChatCompletion chatCompletion = client.chat().completions().create(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletion\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletionCreateParams\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: ChatCompletionCreateParams = ChatCompletionCreateParams.builder()\n        .model(\"openai/gpt-5\")\n        .build()\n    val chatCompletion: ChatCompletion = client.chat().completions().create(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/chat/completions \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"model\": \"openai/gpt-5\",\n          \"agent_attributes\": {\n            \"accuracy\": 0.9,\n            \"complexity\": 0.8\n          },\n          \"audio\": {\n            \"format\": \"mp3\",\n            \"voice\": \"alloy\"\n          },\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"max_turns\": 5,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model_attributes\": {\n            \"gpt-5\": {\n              \"accuracy\": 0.95,\n              \"speed\": 0.6\n            }\n          }\n        }'"
           }
@@ -240,6 +252,10 @@
           {
             "lang": "Java",
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingRequest;\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        CreateEmbeddingRequest params = CreateEmbeddingRequest.builder()\n            .input(\"string\")\n            .model(CreateEmbeddingRequest.Model.TEXT_EMBEDDING_ADA_002)\n            .build();\n        CreateEmbeddingResponse createEmbeddingResponse = client.embeddings().create(params);\n    }\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingRequest\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingResponse\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: CreateEmbeddingRequest = CreateEmbeddingRequest.builder()\n        .input(\"string\")\n        .model(CreateEmbeddingRequest.Model.TEXT_EMBEDDING_ADA_002)\n        .build()\n    val createEmbeddingResponse: CreateEmbeddingResponse = client.embeddings().create(params)\n}"
           },
           {
             "lang": "cURL",
@@ -299,6 +315,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.responses.Response;\nimport com.dedalus_sdk.api.models.responses.ResponseCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ResponseCreateParams params = ResponseCreateParams.builder().build();\n        Response response = client.responses().create(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.responses.Response\nimport com.dedalus_sdk.api.models.responses.ResponseCreateParams\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: ResponseCreateParams = ResponseCreateParams.builder().build()\n    val response: Response = client.responses().create(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/responses \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"background\": true,\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"include\": [\n            \"message.output_text.logprobs\"\n          ],\n          \"input\": \"What is the capital of France?\",\n          \"instructions\": \"You are a helpful assistant.\",\n          \"max_output_tokens\": 1000,\n          \"max_tool_calls\": 10,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model\": \"openai/gpt-4o\",\n          \"parallel_tool_calls\": true,\n          \"service_tier\": \"auto\",\n          \"stream\": true,\n          \"stream_options\": {\n            \"include_usage\": true\n          },\n          \"temperature\": 0,\n          \"text\": {\n            \"type\": \"text\"\n          },\n          \"tool_choice\": \"auto\",\n          \"tools\": [\n            {\n              \"function\": {\n                \"description\": null,\n                \"name\": null,\n                \"parameters\": null\n              },\n              \"type\": \"function\"\n            }\n          ],\n          \"top_logprobs\": 5,\n          \"top_p\": 0.1,\n          \"truncation\": \"auto\"\n        }'"
           }
@@ -354,6 +374,10 @@
           {
             "lang": "Java",
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.core.http.HttpResponse;\nimport com.dedalus_sdk.api.models.audio.speech.SpeechCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        SpeechCreateParams params = SpeechCreateParams.builder()\n            .input(\"input\")\n            .model(SpeechCreateParams.Model.TTS_1)\n            .voice(SpeechCreateParams.Voice.UnionMember1.ALLOY)\n            .build();\n        HttpResponse speech = client.audio().speech().create(params);\n    }\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.core.http.HttpResponse\nimport com.dedalus_sdk.api.models.audio.speech.SpeechCreateParams\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: SpeechCreateParams = SpeechCreateParams.builder()\n        .input(\"input\")\n        .model(SpeechCreateParams.Model.TTS_1)\n        .voice(SpeechCreateParams.Voice.UnionMember1.ALLOY)\n        .build()\n    val speech: HttpResponse = client.audio().speech().create(params)\n}"
           },
           {
             "lang": "cURL",
@@ -425,6 +449,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateParams;\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        TranscriptionCreateParams params = TranscriptionCreateParams.builder()\n            .file(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .model(\"model\")\n            .build();\n        TranscriptionCreateResponse transcription = client.audio().transcriptions().create(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateParams\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateResponse\nimport java.io.ByteArrayInputStream\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: TranscriptionCreateParams = TranscriptionCreateParams.builder()\n        .file(\"Example data\".byteInputStream())\n        .model(\"model\")\n        .build()\n    val transcription: TranscriptionCreateResponse = client.audio().transcriptions().create(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
           }
@@ -494,6 +522,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateParams;\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        TranslationCreateParams params = TranslationCreateParams.builder()\n            .file(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .model(\"model\")\n            .build();\n        TranslationCreateResponse translation = client.audio().translations().create(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateParams\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateResponse\nimport java.io.ByteArrayInputStream\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: TranslationCreateParams = TranslationCreateParams.builder()\n        .file(\"Example data\".byteInputStream())\n        .model(\"model\")\n        .build()\n    val translation: TranslationCreateResponse = client.audio().translations().create(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/translations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
           }
@@ -549,6 +581,10 @@
           {
             "lang": "Java",
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.CreateImageRequest;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        CreateImageRequest params = CreateImageRequest.builder()\n            .prompt(\"A white siamese cat\")\n            .build();\n        ImagesResponse imagesResponse = client.images().generate(params);\n    }\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.images.CreateImageRequest\nimport com.dedalus_sdk.api.models.images.ImagesResponse\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: CreateImageRequest = CreateImageRequest.builder()\n        .prompt(\"A white siamese cat\")\n        .build()\n    val imagesResponse: ImagesResponse = client.images().generate(params)\n}"
           },
           {
             "lang": "cURL",
@@ -610,6 +646,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.ImageEditParams;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ImageEditParams params = ImageEditParams.builder()\n            .image(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .prompt(\"prompt\")\n            .build();\n        ImagesResponse imagesResponse = client.images().edit(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.images.ImageEditParams\nimport com.dedalus_sdk.api.models.images.ImagesResponse\nimport java.io.ByteArrayInputStream\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: ImageEditParams = ImageEditParams.builder()\n        .image(\"Example data\".byteInputStream())\n        .prompt(\"prompt\")\n        .build()\n    val imagesResponse: ImagesResponse = client.images().edit(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/edits \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image' \\\n    -F prompt=prompt"
           }
@@ -669,6 +709,10 @@
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.ImageCreateVariationParams;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ImageCreateVariationParams params = ImageCreateVariationParams.builder()\n            .image(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .build();\n        ImagesResponse imagesResponse = client.images().createVariation(params);\n    }\n}"
           },
           {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.images.ImageCreateVariationParams\nimport com.dedalus_sdk.api.models.images.ImagesResponse\nimport java.io.ByteArrayInputStream\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: ImageCreateVariationParams = ImageCreateVariationParams.builder()\n        .image(\"Example data\".byteInputStream())\n        .build()\n    val imagesResponse: ImagesResponse = client.images().createVariation(params)\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/variations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image'"
           }
@@ -724,6 +768,10 @@
           {
             "lang": "Java",
             "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.ocr.OcrDocument;\nimport com.dedalus_sdk.api.models.ocr.OcrRequest;\nimport com.dedalus_sdk.api.models.ocr.OcrResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        OcrRequest params = OcrRequest.builder()\n            .document(OcrDocument.builder()\n                .documentUrl(\"document_url\")\n                .build())\n            .build();\n        OcrResponse ocrResponse = client.ocr().process(params);\n    }\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "source": "package com.dedalus_sdk.api.example\n\nimport com.dedalus_sdk.api.client.DedalusClient\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient\nimport com.dedalus_sdk.api.models.ocr.OcrDocument\nimport com.dedalus_sdk.api.models.ocr.OcrRequest\nimport com.dedalus_sdk.api.models.ocr.OcrResponse\n\nfun main() {\n    val client: DedalusClient = DedalusOkHttpClient.fromEnv()\n\n    val params: OcrRequest = OcrRequest.builder()\n        .document(OcrDocument.builder()\n            .documentUrl(\"document_url\")\n            .build())\n        .build()\n    val ocrResponse: OcrResponse = client.ocr().process(params)\n}"
           },
           {
             "lang": "cURL",
