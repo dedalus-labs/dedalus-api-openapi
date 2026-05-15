@@ -18,4 +18,5 @@ Our official clients are generated from this spec:
 - [dedalus-sdk-typescript](https://github.com/dedalus-labs/dedalus-sdk-typescript) (TypeScript)
 - [dedalus-sdk-python](https://github.com/dedalus-labs/dedalus-sdk-python) (Python)
 - [dedalus-sdk-go](https://github.com/dedalus-labs/dedalus-sdk-go) (Go)
+- [dedalus-sdk-java](https://github.com/dedalus-labs/dedalus-sdk-java) (Java)
 - [dedalus-sdk-ruby](https://github.com/dedalus-labs/dedalus-sdk-ruby) (Ruby)
