@@ -76,6 +76,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/models \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\""
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk models list \\\n  --api-key 'My API Key'"
           }
         ]
       }
@@ -141,6 +145,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/models/$MODEL_ID \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\""
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk models retrieve \\\n  --api-key 'My API Key' \\\n  --model-id model_id"
           }
         ]
       }
@@ -211,6 +219,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/chat/completions \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"model\": \"openai/gpt-5\",\n          \"agent_attributes\": {\n            \"accuracy\": 0.9,\n            \"complexity\": 0.8\n          },\n          \"audio\": {\n            \"format\": \"mp3\",\n            \"voice\": \"alloy\"\n          },\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"max_turns\": 5,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model_attributes\": {\n            \"gpt-5\": {\n              \"accuracy\": 0.95,\n              \"speed\": 0.6\n            }\n          }\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk chat:completions create \\\n  --api-key 'My API Key' \\\n  --model openai/gpt-5"
           }
         ]
       }
@@ -276,6 +288,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/embeddings \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"input\": \"string\",\n          \"model\": \"text-embedding-ada-002\"\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk embeddings create \\\n  --api-key 'My API Key' \\\n  --input string \\\n  --model text-embedding-ada-002"
           }
         ]
       }
@@ -341,6 +357,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/responses \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"background\": true,\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"include\": [\n            \"message.output_text.logprobs\"\n          ],\n          \"input\": \"What is the capital of France?\",\n          \"instructions\": \"You are a helpful assistant.\",\n          \"max_output_tokens\": 1000,\n          \"max_tool_calls\": 10,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model\": \"openai/gpt-4o\",\n          \"parallel_tool_calls\": true,\n          \"service_tier\": \"auto\",\n          \"stream\": true,\n          \"stream_options\": {\n            \"include_usage\": true\n          },\n          \"temperature\": 0,\n          \"text\": {\n            \"type\": \"text\"\n          },\n          \"tool_choice\": \"auto\",\n          \"tools\": [\n            {\n              \"function\": {\n                \"description\": null,\n                \"name\": null,\n                \"parameters\": null\n              },\n              \"type\": \"function\"\n            }\n          ],\n          \"top_logprobs\": 5,\n          \"top_p\": 0.1,\n          \"truncation\": \"auto\"\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk responses create \\\n  --api-key 'My API Key'"
           }
         ]
       }
@@ -406,6 +426,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/speech \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"input\": \"input\",\n          \"model\": \"tts-1\",\n          \"voice\": \"alloy\"\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk audio:speech create \\\n  --api-key 'My API Key' \\\n  --input input \\\n  --model tts-1 \\\n  --voice alloy"
           }
         ]
       }
@@ -483,6 +507,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk audio:transcriptions create \\\n  --api-key 'My API Key' \\\n  --file 'Example data' \\\n  --model model"
           }
         ]
       }
@@ -560,6 +588,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/translations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk audio:translations create \\\n  --api-key 'My API Key' \\\n  --file 'Example data' \\\n  --model model"
           }
         ]
       }
@@ -625,6 +657,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/generations \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"prompt\": \"A white siamese cat\",\n          \"background\": \"transparent\",\n          \"model\": \"openai/dall-e-3\",\n          \"moderation\": \"auto\",\n          \"n\": 1,\n          \"output_compression\": 85,\n          \"output_format\": \"png\",\n          \"partial_images\": 0,\n          \"quality\": \"standard\",\n          \"response_format\": \"url\",\n          \"size\": \"1024x1024\",\n          \"stream\": true,\n          \"style\": \"vivid\"\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk images generate \\\n  --api-key 'My API Key' \\\n  --prompt 'A white siamese cat'"
           }
         ]
       }
@@ -692,6 +728,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/edits \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image' \\\n    -F prompt=prompt"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk images edit \\\n  --api-key 'My API Key' \\\n  --image 'Example data' \\\n  --prompt prompt"
           }
         ]
       }
@@ -759,6 +799,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/variations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk images create-variation \\\n  --api-key 'My API Key' \\\n  --image 'Example data'"
           }
         ]
       }
@@ -824,6 +868,10 @@
           {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/ocr \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"document\": {\n            \"document_url\": \"document_url\"\n          }\n        }'"
+          },
+          {
+            "lang": "CLI",
+            "source": "dedalus-sdk ocr process \\\n  --api-key 'My API Key' \\\n  --document '{document_url: document_url}'"
           }
         ]
       }
