@@ -22,3 +22,4 @@ Our official clients are generated from this spec:
 - [dedalus-sdk-kotlin](https://github.com/dedalus-labs/dedalus-sdk-kotlin) (Kotlin)
 - [dedalus-sdk-ruby](https://github.com/dedalus-labs/dedalus-sdk-ruby) (Ruby)
 - [dedalus-sdk-php](https://github.com/dedalus-labs/dedalus-sdk-php) (PHP)
+- [dedalus-sdk-sql](https://github.com/dedalus-labs/dedalus-sdk-sql) (SQL)
