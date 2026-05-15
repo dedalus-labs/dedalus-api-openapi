@@ -62,6 +62,10 @@
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tlistModelsResponse, err := client.Models.List(context.TODO())\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", listModelsResponse.Data)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.models.ListModelsResponse;\nimport com.dedalus_sdk.api.models.models.ModelListParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ListModelsResponse listModelsResponse = client.models().list();\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/models \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\""
           }
@@ -113,6 +117,10 @@
           {
             "lang": "Go",
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tmodel, err := client.Models.Get(context.TODO(), \"model_id\")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", model.ID)\n}\n"
+          },
+          {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.models.Model;\nimport com.dedalus_sdk.api.models.models.ModelRetrieveParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        Model model = client.models().retrieve(\"model_id\");\n    }\n}"
           },
           {
             "lang": "cURL",
@@ -173,6 +181,10 @@
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/shared\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tchatCompletion, err := client.Chat.Completions.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.ChatCompletionNewParams{\n\t\tModel: githubcomdedaluslabsdedalussdkgo.F[githubcomdedaluslabsdedalussdkgo.ChatCompletionNewParamsModelUnion](shared.UnionString(\"openai/gpt-5\")),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", chatCompletion.ID)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletion;\nimport com.dedalus_sdk.api.models.chat.completions.ChatCompletionCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()\n            .model(\"openai/gpt-5\")\n            .build();\n        ChatCompletion chatCompletion = client.chat().completions().create(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/chat/completions \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"model\": \"openai/gpt-5\",\n          \"agent_attributes\": {\n            \"accuracy\": 0.9,\n            \"complexity\": 0.8\n          },\n          \"audio\": {\n            \"format\": \"mp3\",\n            \"voice\": \"alloy\"\n          },\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"max_turns\": 5,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model_attributes\": {\n            \"gpt-5\": {\n              \"accuracy\": 0.95,\n              \"speed\": 0.6\n            }\n          }\n        }'"
           }
@@ -224,6 +236,10 @@
           {
             "lang": "Go",
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/shared\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tcreateEmbeddingResponse, err := client.Embeddings.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.EmbeddingNewParams{\n\t\tCreateEmbeddingRequest: githubcomdedaluslabsdedalussdkgo.CreateEmbeddingRequestParam{\n\t\t\tInput: githubcomdedaluslabsdedalussdkgo.F[githubcomdedaluslabsdedalussdkgo.CreateEmbeddingRequestInputUnionParam](shared.UnionString(\"string\")),\n\t\t\tModel: githubcomdedaluslabsdedalussdkgo.F(githubcomdedaluslabsdedalussdkgo.CreateEmbeddingRequestModelTextEmbeddingAda002),\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", createEmbeddingResponse.Data)\n}\n"
+          },
+          {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingRequest;\nimport com.dedalus_sdk.api.models.embeddings.CreateEmbeddingResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        CreateEmbeddingRequest params = CreateEmbeddingRequest.builder()\n            .input(\"string\")\n            .model(CreateEmbeddingRequest.Model.TEXT_EMBEDDING_ADA_002)\n            .build();\n        CreateEmbeddingResponse createEmbeddingResponse = client.embeddings().create(params);\n    }\n}"
           },
           {
             "lang": "cURL",
@@ -279,6 +295,10 @@
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tresponse, err := client.Responses.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.ResponseNewParams{\n\t\tResponseCreateParams: githubcomdedaluslabsdedalussdkgo.ResponseCreateParams{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", response.ID)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.responses.Response;\nimport com.dedalus_sdk.api.models.responses.ResponseCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ResponseCreateParams params = ResponseCreateParams.builder().build();\n        Response response = client.responses().create(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/responses \\\n    -H 'Content-Type: application/json' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -d '{\n          \"background\": true,\n          \"credentials\": {\n            \"connection_name\": \"external-service\",\n            \"values\": {\n              \"api_key\": \"sk-...\"\n            }\n          },\n          \"include\": [\n            \"message.output_text.logprobs\"\n          ],\n          \"input\": \"What is the capital of France?\",\n          \"instructions\": \"You are a helpful assistant.\",\n          \"max_output_tokens\": 1000,\n          \"max_tool_calls\": 10,\n          \"mcp_servers\": \"dedalus-labs/example-server\",\n          \"model\": \"openai/gpt-4o\",\n          \"parallel_tool_calls\": true,\n          \"service_tier\": \"auto\",\n          \"stream\": true,\n          \"stream_options\": {\n            \"include_usage\": true\n          },\n          \"temperature\": 0,\n          \"text\": {\n            \"type\": \"text\"\n          },\n          \"tool_choice\": \"auto\",\n          \"tools\": [\n            {\n              \"function\": {\n                \"description\": null,\n                \"name\": null,\n                \"parameters\": null\n              },\n              \"type\": \"function\"\n            }\n          ],\n          \"top_logprobs\": 5,\n          \"top_p\": 0.1,\n          \"truncation\": \"auto\"\n        }'"
           }
@@ -330,6 +350,10 @@
           {
             "lang": "Go",
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tspeech, err := client.Audio.Speech.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.AudioSpeechNewParams{\n\t\tInput: githubcomdedaluslabsdedalussdkgo.F(\"input\"),\n\t\tModel: githubcomdedaluslabsdedalussdkgo.F(githubcomdedaluslabsdedalussdkgo.AudioSpeechNewParamsModelTts1),\n\t\tVoice: githubcomdedaluslabsdedalussdkgo.F[githubcomdedaluslabsdedalussdkgo.AudioSpeechNewParamsVoiceUnion](githubcomdedaluslabsdedalussdkgo.AudioSpeechNewParamsVoiceString(githubcomdedaluslabsdedalussdkgo.AudioSpeechNewParamsVoiceStringAlloy)),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", speech)\n}\n"
+          },
+          {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.core.http.HttpResponse;\nimport com.dedalus_sdk.api.models.audio.speech.SpeechCreateParams;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        SpeechCreateParams params = SpeechCreateParams.builder()\n            .input(\"input\")\n            .model(SpeechCreateParams.Model.TTS_1)\n            .voice(SpeechCreateParams.Voice.UnionMember1.ALLOY)\n            .build();\n        HttpResponse speech = client.audio().speech().create(params);\n    }\n}"
           },
           {
             "lang": "cURL",
@@ -397,6 +421,10 @@
             "source": "package main\n\nimport (\n\t\"bytes\"\n\t\"context\"\n\t\"fmt\"\n\t\"io\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\ttranscription, err := client.Audio.Transcriptions.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.AudioTranscriptionNewParams{\n\t\tFile:  githubcomdedaluslabsdedalussdkgo.F(io.Reader(bytes.NewBuffer([]byte(\"Example data\")))),\n\t\tModel: githubcomdedaluslabsdedalussdkgo.F(\"model\"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", transcription)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateParams;\nimport com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        TranscriptionCreateParams params = TranscriptionCreateParams.builder()\n            .file(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .model(\"model\")\n            .build();\n        TranscriptionCreateResponse transcription = client.audio().transcriptions().create(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
           }
@@ -462,6 +490,10 @@
             "source": "package main\n\nimport (\n\t\"bytes\"\n\t\"context\"\n\t\"fmt\"\n\t\"io\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\ttranslation, err := client.Audio.Translations.New(context.TODO(), githubcomdedaluslabsdedalussdkgo.AudioTranslationNewParams{\n\t\tFile:  githubcomdedaluslabsdedalussdkgo.F(io.Reader(bytes.NewBuffer([]byte(\"Example data\")))),\n\t\tModel: githubcomdedaluslabsdedalussdkgo.F(\"model\"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", translation)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateParams;\nimport com.dedalus_sdk.api.models.audio.translations.TranslationCreateResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        TranslationCreateParams params = TranslationCreateParams.builder()\n            .file(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .model(\"model\")\n            .build();\n        TranslationCreateResponse translation = client.audio().translations().create(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/audio/translations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'file=@/path/to/file' \\\n    -F model=model"
           }
@@ -513,6 +545,10 @@
           {
             "lang": "Go",
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\timagesResponse, err := client.Images.Generate(context.TODO(), githubcomdedaluslabsdedalussdkgo.ImageGenerateParams{\n\t\tCreateImageRequest: githubcomdedaluslabsdedalussdkgo.CreateImageRequestParam{\n\t\t\tPrompt: githubcomdedaluslabsdedalussdkgo.F(\"A white siamese cat\"),\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", imagesResponse.Created)\n}\n"
+          },
+          {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.CreateImageRequest;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        CreateImageRequest params = CreateImageRequest.builder()\n            .prompt(\"A white siamese cat\")\n            .build();\n        ImagesResponse imagesResponse = client.images().generate(params);\n    }\n}"
           },
           {
             "lang": "cURL",
@@ -570,6 +606,10 @@
             "source": "package main\n\nimport (\n\t\"bytes\"\n\t\"context\"\n\t\"fmt\"\n\t\"io\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\timagesResponse, err := client.Images.Edit(context.TODO(), githubcomdedaluslabsdedalussdkgo.ImageEditParams{\n\t\tImage:  githubcomdedaluslabsdedalussdkgo.F(io.Reader(bytes.NewBuffer([]byte(\"Example data\")))),\n\t\tPrompt: githubcomdedaluslabsdedalussdkgo.F(\"prompt\"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", imagesResponse.Created)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.ImageEditParams;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ImageEditParams params = ImageEditParams.builder()\n            .image(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .prompt(\"prompt\")\n            .build();\n        ImagesResponse imagesResponse = client.images().edit(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/edits \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image' \\\n    -F prompt=prompt"
           }
@@ -625,6 +665,10 @@
             "source": "package main\n\nimport (\n\t\"bytes\"\n\t\"context\"\n\t\"fmt\"\n\t\"io\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\timagesResponse, err := client.Images.NewVariation(context.TODO(), githubcomdedaluslabsdedalussdkgo.ImageNewVariationParams{\n\t\tImage: githubcomdedaluslabsdedalussdkgo.F(io.Reader(bytes.NewBuffer([]byte(\"Example data\")))),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", imagesResponse.Created)\n}\n"
           },
           {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.images.ImageCreateVariationParams;\nimport com.dedalus_sdk.api.models.images.ImagesResponse;\nimport java.io.ByteArrayInputStream;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        ImageCreateVariationParams params = ImageCreateVariationParams.builder()\n            .image(new ByteArrayInputStream(\"Example data\".getBytes()))\n            .build();\n        ImagesResponse imagesResponse = client.images().createVariation(params);\n    }\n}"
+          },
+          {
             "lang": "cURL",
             "source": "curl https://api.dedaluslabs.ai/v1/images/variations \\\n    -H 'Content-Type: multipart/form-data' \\\n    -H 'User-Agent: Dedalus-SDK' \\\n    -H 'X-SDK-Version: 1.0.0' \\\n    -H \"Authorization: Bearer $DEDALUS_API_KEY\" \\\n    -F 'image=@/path/to/image'"
           }
@@ -676,6 +720,10 @@
           {
             "lang": "Go",
             "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\n\t\"github.com/dedalus-labs/dedalus-sdk-go\"\n\t\"github.com/dedalus-labs/dedalus-sdk-go/option\"\n)\n\nfunc main() {\n\tclient := githubcomdedaluslabsdedalussdkgo.NewClient(\n\t\toption.WithAPIKey(\"My API Key\"),\n\t)\n\tocrResponse, err := client.OCR.Process(context.TODO(), githubcomdedaluslabsdedalussdkgo.OCRProcessParams{\n\t\tOCRRequest: githubcomdedaluslabsdedalussdkgo.OCRRequestParam{\n\t\t\tDocument: githubcomdedaluslabsdedalussdkgo.F(githubcomdedaluslabsdedalussdkgo.OCRDocumentParam{\n\t\t\t\tDocumentURL: githubcomdedaluslabsdedalussdkgo.F(\"document_url\"),\n\t\t\t}),\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf(\"%+v\\n\", ocrResponse.Model)\n}\n"
+          },
+          {
+            "lang": "Java",
+            "source": "package com.dedalus_sdk.api.example;\n\nimport com.dedalus_sdk.api.client.DedalusClient;\nimport com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;\nimport com.dedalus_sdk.api.models.ocr.OcrDocument;\nimport com.dedalus_sdk.api.models.ocr.OcrRequest;\nimport com.dedalus_sdk.api.models.ocr.OcrResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        DedalusClient client = DedalusOkHttpClient.fromEnv();\n\n        OcrRequest params = OcrRequest.builder()\n            .document(OcrDocument.builder()\n                .documentUrl(\"document_url\")\n                .build())\n            .build();\n        OcrResponse ocrResponse = client.ocr().process(params);\n    }\n}"
           },
           {
             "lang": "cURL",
