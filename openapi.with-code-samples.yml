@@ -185,6 +185,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        list_models_response = dedalus.models.list
+
+
+                        puts(list_models_response)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/models \\
 
@@ -410,6 +429,25 @@
                         \    val model: Model = client.models().retrieve(\"model_id\")
 
                         }"
+                    },
+                  {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        model = dedalus.models.retrieve(\"model_id\")
+
+
+                        puts(model)"
                     },
                   {
                       lang: cURL,
@@ -682,6 +720,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        chat_completion = dedalus.chat.completions.create(model: \"openai/gpt-5\")
+
+
+                        puts(chat_completion)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/chat/completions \\
 
@@ -926,6 +983,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        create_embedding_response = dedalus.embeddings.create(input: \"string\", model: :\"text-embedding-ada-002\")
+
+
+                        puts(create_embedding_response)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/embeddings \\
 
@@ -1099,6 +1175,25 @@
                         \    val response: Response = client.responses().create(params)
 
                         }"
+                    },
+                  {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        response = dedalus.responses.create
+
+
+                        puts(response)"
                     },
                   {
                       lang: cURL,
@@ -1400,6 +1495,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        speech = dedalus.audio.speech.create(input: \"input\", model: :\"tts-1\", voice: :alloy)
+
+
+                        puts(speech)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/speech \\
 
@@ -1633,6 +1747,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        transcription = dedalus.audio.transcriptions.create(file: StringIO.new(\"Example data\"), model: \"model\")
+
+
+                        puts(transcription)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\
 
@@ -1860,6 +1993,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        translation = dedalus.audio.translations.create(file: StringIO.new(\"Example data\"), model: \"model\")
+
+
+                        puts(translation)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/translations \\
 
@@ -2045,6 +2197,25 @@
                         \    val imagesResponse: ImagesResponse = client.images().generate(params)
 
                         }"
+                    },
+                  {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        images_response = dedalus.images.generate(prompt: \"A white siamese cat\")
+
+
+                        puts(images_response)"
                     },
                   {
                       lang: cURL,
@@ -2280,6 +2451,25 @@
                         }"
                     },
                   {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        images_response = dedalus.images.edit(image: StringIO.new(\"Example data\"), prompt: \"prompt\")
+
+
+                        puts(images_response)"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/images/edits \\
 
@@ -2473,6 +2663,25 @@
                         \    val imagesResponse: ImagesResponse = client.images().createVariation(params)
 
                         }"
+                    },
+                  {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        images_response = dedalus.images.create_variation(image: StringIO.new(\"Example data\"))
+
+
+                        puts(images_response)"
                     },
                   {
                       lang: cURL,
@@ -2676,6 +2885,25 @@
                         \    val ocrResponse: OcrResponse = client.ocr().process(params)
 
                         }"
+                    },
+                  {
+                      lang: Ruby,
+                      source: "require \"dedalus_sdk\"
+
+
+                        dedalus = DedalusSDK::Client.new(
+
+                        \  api_key: \"My API Key\",
+
+                        \  environment: \"development\" # defaults to \"production\"
+
+                        )
+
+
+                        ocr_response = dedalus.ocr.process(document: {document_url: \"document_url\"})
+
+
+                        puts(ocr_response)"
                     },
                   {
                       lang: cURL,
