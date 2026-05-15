@@ -132,6 +132,36 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.models.ListModelsResponse;
+
+                        import com.dedalus_sdk.api.models.models.ModelListParams;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        ListModelsResponse listModelsResponse = client.models().list();
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/models \\
 
@@ -304,6 +334,36 @@
                         \tfmt.Printf(\"%+v\\n\", model.ID)
 
                         }\n"
+                    },
+                  {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.models.Model;
+
+                        import com.dedalus_sdk.api.models.models.ModelRetrieveParams;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        Model model = client.models().retrieve(\"model_id\");
+
+                        \    }
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -511,6 +571,42 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.chat.completions.ChatCompletion;
+
+                        import com.dedalus_sdk.api.models.chat.completions.ChatCompletionCreateParams;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()
+
+                        \            .model(\"openai/gpt-5\")
+
+                        \            .build();
+
+                        \        ChatCompletion chatCompletion = client.chat().completions().create(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/chat/completions \\
 
@@ -686,6 +782,44 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.embeddings.CreateEmbeddingRequest;
+
+                        import com.dedalus_sdk.api.models.embeddings.CreateEmbeddingResponse;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        CreateEmbeddingRequest params = CreateEmbeddingRequest.builder()
+
+                        \            .input(\"string\")
+
+                        \            .model(CreateEmbeddingRequest.Model.TEXT_EMBEDDING_ADA_002)
+
+                        \            .build();
+
+                        \        CreateEmbeddingResponse createEmbeddingResponse = client.embeddings().create(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/embeddings \\
 
@@ -802,6 +936,38 @@
                         \tfmt.Printf(\"%+v\\n\", response.ID)
 
                         }\n"
+                    },
+                  {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.responses.Response;
+
+                        import com.dedalus_sdk.api.models.responses.ResponseCreateParams;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        ResponseCreateParams params = ResponseCreateParams.builder().build();
+
+                        \        Response response = client.responses().create(params);
+
+                        \    }
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -1030,6 +1196,46 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.core.http.HttpResponse;
+
+                        import com.dedalus_sdk.api.models.audio.speech.SpeechCreateParams;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        SpeechCreateParams params = SpeechCreateParams.builder()
+
+                        \            .input(\"input\")
+
+                        \            .model(SpeechCreateParams.Model.TTS_1)
+
+                        \            .voice(SpeechCreateParams.Voice.UnionMember1.ALLOY)
+
+                        \            .build();
+
+                        \        HttpResponse speech = client.audio().speech().create(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/speech \\
 
@@ -1190,6 +1396,46 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateParams;
+
+                        import com.dedalus_sdk.api.models.audio.transcriptions.TranscriptionCreateResponse;
+
+                        import java.io.ByteArrayInputStream;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        TranscriptionCreateParams params = TranscriptionCreateParams.builder()
+
+                        \            .file(new ByteArrayInputStream(\"Example data\".getBytes()))
+
+                        \            .model(\"model\")
+
+                        \            .build();
+
+                        \        TranscriptionCreateResponse transcription = client.audio().transcriptions().create(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\
 
@@ -1344,6 +1590,46 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.audio.translations.TranslationCreateParams;
+
+                        import com.dedalus_sdk.api.models.audio.translations.TranslationCreateResponse;
+
+                        import java.io.ByteArrayInputStream;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        TranslationCreateParams params = TranslationCreateParams.builder()
+
+                        \            .file(new ByteArrayInputStream(\"Example data\".getBytes()))
+
+                        \            .model(\"model\")
+
+                        \            .build();
+
+                        \        TranslationCreateResponse translation = client.audio().translations().create(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/translations \\
 
@@ -1464,6 +1750,42 @@
                         \tfmt.Printf(\"%+v\\n\", imagesResponse.Created)
 
                         }\n"
+                    },
+                  {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.images.CreateImageRequest;
+
+                        import com.dedalus_sdk.api.models.images.ImagesResponse;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        CreateImageRequest params = CreateImageRequest.builder()
+
+                        \            .prompt(\"A white siamese cat\")
+
+                        \            .build();
+
+                        \        ImagesResponse imagesResponse = client.images().generate(params);
+
+                        \    }
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -1626,6 +1948,46 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.images.ImageEditParams;
+
+                        import com.dedalus_sdk.api.models.images.ImagesResponse;
+
+                        import java.io.ByteArrayInputStream;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        ImageEditParams params = ImageEditParams.builder()
+
+                        \            .image(new ByteArrayInputStream(\"Example data\".getBytes()))
+
+                        \            .prompt(\"prompt\")
+
+                        \            .build();
+
+                        \        ImagesResponse imagesResponse = client.images().edit(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/images/edits \\
 
@@ -1752,6 +2114,44 @@
                         }\n"
                     },
                   {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.images.ImageCreateVariationParams;
+
+                        import com.dedalus_sdk.api.models.images.ImagesResponse;
+
+                        import java.io.ByteArrayInputStream;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        ImageCreateVariationParams params = ImageCreateVariationParams.builder()
+
+                        \            .image(new ByteArrayInputStream(\"Example data\".getBytes()))
+
+                        \            .build();
+
+                        \        ImagesResponse imagesResponse = client.images().createVariation(params);
+
+                        \    }
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/images/variations \\
 
@@ -1876,6 +2276,48 @@
                         \tfmt.Printf(\"%+v\\n\", ocrResponse.Model)
 
                         }\n"
+                    },
+                  {
+                      lang: Java,
+                      source: "package com.dedalus_sdk.api.example;
+
+
+                        import com.dedalus_sdk.api.client.DedalusClient;
+
+                        import com.dedalus_sdk.api.client.okhttp.DedalusOkHttpClient;
+
+                        import com.dedalus_sdk.api.models.ocr.OcrDocument;
+
+                        import com.dedalus_sdk.api.models.ocr.OcrRequest;
+
+                        import com.dedalus_sdk.api.models.ocr.OcrResponse;
+
+
+                        public final class Main {
+
+                        \    private Main() {}
+
+
+                        \    public static void main(String[] args) {
+
+                        \        DedalusClient client = DedalusOkHttpClient.fromEnv();
+
+
+                        \        OcrRequest params = OcrRequest.builder()
+
+                        \            .document(OcrDocument.builder()
+
+                        \                .documentUrl(\"document_url\")
+
+                        \                .build())
+
+                        \            .build();
+
+                        \        OcrResponse ocrResponse = client.ocr().process(params);
+
+                        \    }
+
+                        }"
                     },
                   {
                       lang: cURL,
