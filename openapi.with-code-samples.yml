@@ -204,6 +204,39 @@
                         puts(list_models_response)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $listModelsResponse = $client->models->list();
+
+
+                        \  var_dump($listModelsResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/models \\
 
@@ -454,6 +487,39 @@
 
 
                         puts(model)"
+                    },
+                  {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $model = $client->models->retrieve('model_id');
+
+
+                        \  var_dump($model);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -753,6 +819,209 @@
                         puts(chat_completion)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $chatCompletion = $client->chat->completions->create(
+
+                        \    model: 'openai/gpt-5',
+
+                        \    agentAttributes: ['accuracy' => 0.9, 'complexity' => 0.8],
+
+                        \    audio: ['format' => 'mp3', 'voice' => 'alloy'],
+
+                        \    automaticToolExecution: true,
+
+                        \    cachedContent: 'cached_content',
+
+                        \    correlationID: 'correlation_id',
+
+                        \    credentials: [
+
+                        \      'connectionName' => 'external-service',
+
+                        \      'values' => ['api_key' => 'sk-...'],
+
+                        \    ],
+
+                        \    deferred: true,
+
+                        \    deferredCalls: [
+
+                        \      [
+
+                        \        'id' => 'id',
+
+                        \        'name' => 'name',
+
+                        \        'arguments' => ['foo' => 'string'],
+
+                        \        'blockedBy' => ['string'],
+
+                        \        'dependencies' => ['string'],
+
+                        \        'venue' => 'venue',
+
+                        \      ],
+
+                        \    ],
+
+                        \    frequencyPenalty: -2,
+
+                        \    functionCall: 'function_call',
+
+                        \    functions: [
+
+                        \      [
+
+                        \        'name' => 'name',
+
+                        \        'description' => 'description',
+
+                        \        'parameters' => ['foo' => 'bar'],
+
+                        \      ],
+
+                        \    ],
+
+                        \    generationConfig: ['foo' => 'string'],
+
+                        \    guardrails: [['foo' => 'bar']],
+
+                        \    handoffConfig: ['foo' => 'bar'],
+
+                        \    handoffMode: true,
+
+                        \    inferenceGeo: 'inference_geo',
+
+                        \    logitBias: ['foo' => 0],
+
+                        \    logprobs: true,
+
+                        \    maxCompletionTokens: 0,
+
+                        \    maxTokens: 1,
+
+                        \    maxTurns: 5,
+
+                        \    mcpServers: 'dedalus-labs/example-server',
+
+                        \    messages: [
+
+                        \      ['content' => 'string', 'role' => 'developer', 'name' => 'name']
+
+                        \    ],
+
+                        \    metadata: ['foo' => 'string'],
+
+                        \    modalities: ['string'],
+
+                        \    modelAttributes: ['gpt-5' => ['accuracy' => 0.95, 'speed' => 0.6]],
+
+                        \    n: 1,
+
+                        \    outputConfig: ['foo' => 'string'],
+
+                        \    parallelToolCalls: true,
+
+                        \    prediction: ['content' => 'string', 'type' => 'content'],
+
+                        \    presencePenalty: -2,
+
+                        \    promptCacheKey: 'prompt_cache_key',
+
+                        \    promptCacheRetention: 'prompt_cache_retention',
+
+                        \    promptMode: 'reasoning',
+
+                        \    reasoningEffort: 'reasoning_effort',
+
+                        \    responseFormat: ['type' => 'text'],
+
+                        \    safePrompt: true,
+
+                        \    safetyIdentifier: 'safety_identifier',
+
+                        \    safetySettings: [
+
+                        \      [
+
+                        \        'category' => 'HARM_CATEGORY_UNSPECIFIED',
+
+                        \        'threshold' => 'HARM_BLOCK_THRESHOLD_UNSPECIFIED',
+
+                        \      ],
+
+                        \    ],
+
+                        \    searchParameters: ['foo' => 'string'],
+
+                        \    seed: 0,
+
+                        \    serviceTier: 'service_tier',
+
+                        \    speed: 'standard',
+
+                        \    stop: ['string'],
+
+                        \    store: true,
+
+                        \    streamOptions: ['foo' => 'string'],
+
+                        \    systemInstruction: ['foo' => 'string'],
+
+                        \    temperature: 0,
+
+                        \    thinking: ['budgetTokens' => 1024, 'type' => 'enabled'],
+
+                        \    toolChoice: 'string',
+
+                        \    toolConfig: ['foo' => 'string'],
+
+                        \    tools: [['function' => ['name' => 'name'], 'type' => 'function']],
+
+                        \    topK: 0,
+
+                        \    topLogprobs: 0,
+
+                        \    topP: 0,
+
+                        \    user: 'user',
+
+                        \    verbosity: 'verbosity',
+
+                        \    webSearchOptions: ['foo' => 'string'],
+
+                        \  );
+
+
+                        \  var_dump($chatCompletion);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/chat/completions \\
 
@@ -1024,6 +1293,51 @@
                         puts(create_embedding_response)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $createEmbeddingResponse = $client->embeddings->create(
+
+                        \    input: 'string',
+
+                        \    model: 'text-embedding-ada-002',
+
+                        \    dimensions: 1,
+
+                        \    encodingFormat: 'float',
+
+                        \    user: 'user',
+
+                        \  );
+
+
+                        \  var_dump($createEmbeddingResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/embeddings \\
 
@@ -1226,6 +1540,127 @@
 
 
                         puts(response)"
+                    },
+                  {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $response = $client->responses->create(
+
+                        \    background: true,
+
+                        \    conversation: 'string',
+
+                        \    credentials: [
+
+                        \      'connectionName' => 'external-service',
+
+                        \      'values' => ['api_key' => 'sk-...'],
+
+                        \    ],
+
+                        \    frequencyPenalty: 0,
+
+                        \    include: ['message.output_text.logprobs'],
+
+                        \    input: 'What is the capital of France?',
+
+                        \    instructions: 'You are a helpful assistant.',
+
+                        \    maxOutputTokens: 1000,
+
+                        \    maxToolCalls: 10,
+
+                        \    mcpServers: 'dedalus-labs/example-server',
+
+                        \    metadata: ['foo' => 'string'],
+
+                        \    model: 'openai/gpt-4o',
+
+                        \    parallelToolCalls: true,
+
+                        \    presencePenalty: 0,
+
+                        \    previousResponseID: 'previous_response_id',
+
+                        \    prompt: [
+
+                        \      'id' => 'id', 'variables' => ['foo' => 'string'], 'version' => 'version'
+
+                        \    ],
+
+                        \    promptCacheKey: 'prompt_cache_key',
+
+                        \    reasoning: ['foo' => 'string'],
+
+                        \    safetyIdentifier: 'safety_identifier',
+
+                        \    serviceTier: 'auto',
+
+                        \    store: true,
+
+                        \    stream: true,
+
+                        \    streamOptions: ['include_usage' => true],
+
+                        \    temperature: 0,
+
+                        \    text: ['type' => 'text'],
+
+                        \    toolChoice: 'auto',
+
+                        \    tools: [
+
+                        \      [
+
+                        \        'function' => [
+
+                        \          'description' => null, 'name' => null, 'parameters' => null
+
+                        \        ],
+
+                        \        'type' => 'function',
+
+                        \      ],
+
+                        \    ],
+
+                        \    topLogprobs: 5,
+
+                        \    topP: 0.1,
+
+                        \    truncation: 'auto',
+
+                        \    user: 'user',
+
+                        \  );
+
+
+                        \  var_dump($response);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -1552,6 +1987,55 @@
                         puts(speech)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $speech = $client->audio->speech->create(
+
+                        \    input: 'input',
+
+                        \    model: 'tts-1',
+
+                        \    voice: 'alloy',
+
+                        \    instructions: 'instructions',
+
+                        \    responseFormat: 'mp3',
+
+                        \    speed: 0.25,
+
+                        \    streamFormat: 'sse',
+
+                        \  );
+
+
+                        \  var_dump($speech);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/speech \\
 
@@ -1816,6 +2300,55 @@
                         puts(transcription)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\FileParam;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $transcription = $client->audio->transcriptions->create(
+
+                        \    file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
+
+                        \    model: 'model',
+
+                        \    language: 'language',
+
+                        \    prompt: 'prompt',
+
+                        \    responseFormat: 'response_format',
+
+                        \    temperature: 0,
+
+                        \  );
+
+
+                        \  var_dump($transcription);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/transcriptions \\
 
@@ -2072,6 +2605,53 @@
                         puts(translation)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\FileParam;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $translation = $client->audio->translations->create(
+
+                        \    file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
+
+                        \    model: 'model',
+
+                        \    prompt: 'prompt',
+
+                        \    responseFormat: 'response_format',
+
+                        \    temperature: 0,
+
+                        \  );
+
+
+                        \  var_dump($translation);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/audio/translations \\
 
@@ -2286,6 +2866,69 @@
 
 
                         puts(images_response)"
+                    },
+                  {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $imagesResponse = $client->images->generate(
+
+                        \    prompt: 'A white siamese cat',
+
+                        \    background: 'transparent',
+
+                        \    model: 'openai/dall-e-3',
+
+                        \    moderation: 'auto',
+
+                        \    n: 1,
+
+                        \    outputCompression: 85,
+
+                        \    outputFormat: 'png',
+
+                        \    partialImages: 0,
+
+                        \    quality: 'standard',
+
+                        \    responseFormat: 'url',
+
+                        \    size: '1024x1024',
+
+                        \    stream: true,
+
+                        \    style: 'vivid',
+
+                        \    user: 'user',
+
+                        \  );
+
+
+                        \  var_dump($imagesResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -2548,6 +3191,59 @@
                         puts(images_response)"
                     },
                   {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\FileParam;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $imagesResponse = $client->images->edit(
+
+                        \    image: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
+
+                        \    prompt: 'prompt',
+
+                        \    mask: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
+
+                        \    model: 'model',
+
+                        \    n: 0,
+
+                        \    responseFormat: 'response_format',
+
+                        \    size: 'size',
+
+                        \    user: 'user',
+
+                        \  );
+
+
+                        \  var_dump($imagesResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
+                    },
+                  {
                       lang: cURL,
                       source: "curl https://api.dedaluslabs.ai/v1/images/edits \\
 
@@ -2770,6 +3466,55 @@
 
 
                         puts(images_response)"
+                    },
+                  {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\FileParam;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $imagesResponse = $client->images->createVariation(
+
+                        \    image: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
+
+                        \    model: 'model',
+
+                        \    n: 0,
+
+                        \    responseFormat: 'response_format',
+
+                        \    size: 'size',
+
+                        \    user: 'user',
+
+                        \  );
+
+
+                        \  var_dump($imagesResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
                     },
                   {
                       lang: cURL,
@@ -3000,6 +3745,45 @@
 
 
                         puts(ocr_response)"
+                    },
+                  {
+                      lang: PHP,
+                      source: "<?php
+
+
+                        require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+                        use DedalusSDK\\Client;
+
+                        use DedalusSDK\\Core\\Exceptions\\APIException;
+
+
+                        $client = new Client(
+
+                        \  apiKey: getenv('DEDALUS_API_KEY') ?: 'My API Key', environment: 'development'
+
+                        );
+
+
+                        try {
+
+                        \  $ocrResponse = $client->ocr->process(
+
+                        \    document: ['documentURL' => 'document_url', 'type' => 'type'],
+
+                        \    model: 'model',
+
+                        \  );
+
+
+                        \  var_dump($ocrResponse);
+
+                        } catch (APIException $e) {
+
+                        \  echo $e->getMessage();
+
+                        }"
                     },
                   {
                       lang: cURL,
